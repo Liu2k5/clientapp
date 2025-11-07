@@ -15,12 +15,16 @@ import com.google.gson.JsonObject;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class Controller {
     private static final String SERVER_URL = "http://localhost:8080/api/license";
-    private static final String PRODUCT_NAME = "Product 1";
+    private static final String PRODUCT_NAME = "Product 2";
     
     @FXML
     private TextField textField;
@@ -28,6 +32,7 @@ public class Controller {
     private String license = "";
     private Thread heartbeatThread;  // Lưu reference toàn cục
     private volatile boolean isRunning = false;  // Flag để dừng thread an toàn
+    private LicenseWebSocketClient wsClient;  // WebSocket client
 
     public static String getDeviceId() throws Exception {
         InetAddress localHost = InetAddress.getLocalHost();
@@ -80,10 +85,31 @@ public class Controller {
                     heartbeatThread.start();
                 }
                 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Kích hoạt thành công");
-                alert.setContentText("Kích hoạt li-xăng thành công.");
-                alert.showAndWait();
+                // Navigate to main screen
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+                Parent root = loader.load();
+                MainController mainController = loader.getController();
+                mainController.initialize(license, deviceId, this);
+                
+                Stage stage = (Stage) textField.getScene().getWindow();
+                stage.setScene(new Scene(root, 600, 400));
+                stage.setTitle("Ứng dụng đã kích hoạt");
+                
+                // Start WebSocket connection in background thread after navigation
+                new Thread(() -> {
+                    try {
+                        System.out.println("=== Starting WebSocket connection ===");
+                        wsClient = new LicenseWebSocketClient("ws://localhost:8080", license, deviceId, this);
+                        System.out.println("WebSocket client created");
+                        wsClient.setMainController(mainController);
+                        System.out.println("MainController set in WebSocket client");
+                        wsClient.connectBlocking(); // Chờ kết nối hoàn tất
+                        System.out.println("WebSocket connected successfully");
+                    } catch (Exception e) {
+                        System.err.println("Failed to connect WebSocket: " + e.getMessage());
+                        e.printStackTrace();
+                    }
+                }).start();
 
             } else {
                 String errorMsg = getErrorMessageFromResponse(response.body());
@@ -123,6 +149,11 @@ public class Controller {
             isRunning = false;
             if (heartbeatThread != null && heartbeatThread.isAlive()) {
                 heartbeatThread.interrupt();
+            }
+            // Close WebSocket connection
+            if (wsClient != null) {
+                wsClient.close();
+                wsClient = null;
             }
         } else {
             String errorMsg = getErrorMessageFromResponse(response.body());
@@ -169,5 +200,13 @@ public class Controller {
             // fallback
         }
         return responseBody;
+    }
+    
+    public void stopHeartbeat() {
+        isRunning = false;
+        if (heartbeatThread != null && heartbeatThread.isAlive()) {
+            heartbeatThread.interrupt();
+        }
+        System.out.println("Heartbeat stopped due to license lock");
     }
 }

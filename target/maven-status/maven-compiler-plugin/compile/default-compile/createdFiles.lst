@@ -1,3 +1,8 @@
+com\hsf\SimpleWebSocketTest.class
 com\hsf\Controller.class
 module-info.class
 com\hsf\LicenseClient.class
+com\hsf\TestAlert.class
+com\hsf\MainController.class
+com\hsf\SimpleWebSocketTest$1.class
+com\hsf\LicenseWebSocketClient.class

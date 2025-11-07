@@ -4,6 +4,7 @@ module com.hsf {
     requires javafx.graphics;
     requires java.net.http;
     requires com.google.gson;
+    requires Java.WebSocket;
 
     opens com.hsf to javafx.fxml;
     exports com.hsf;
