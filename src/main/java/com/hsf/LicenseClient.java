@@ -25,7 +25,7 @@ public class LicenseClient extends Application {
         });
         stage.show();
     }
-    
+
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(LicenseClient.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();

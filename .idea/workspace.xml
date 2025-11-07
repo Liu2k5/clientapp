@@ -10,16 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dba5d43f-4ad9-40a7-9ee1-4ef7e9462404" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hsf/LicenseClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hsf/LicenseClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hsf/view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hsf/view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hsf/LicenseClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hsf/LicenseClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hsf/view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hsf/view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/clientapp-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hsf/LicenseWebSocketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hsf/LicenseWebSocketClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hsf/TestAlert.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hsf/LicenseClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hsf/LicenseWebSocketClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hsf/LicenseWebSocketClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hsf/TestAlert.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
@@ -53,7 +50,9 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.SimpleWebSocketTest.executor&quot;: &quot;Run&quot;,
     &quot;JAR Application.clientapp.jar.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.clientapp [mvn,javafx:run].executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
@@ -74,13 +73,64 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.SimpleWebSocketTest">
+    <configuration name="SimpleWebSocketTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.hsf.SimpleWebSocketTest" />
+      <module name="clientapp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hsf.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="clientapp.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/clientapp_jar/clientapp.jar" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2" />
     </configuration>
+    <configuration name="clientapp [mvn,javafx:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="mvn" />
+                <option value="javafx:run" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.SimpleWebSocketTest" />
+      <item itemvalue="JAR Application.clientapp.jar" />
+      <item itemvalue="Maven.clientapp [mvn,javafx:run]" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SimpleWebSocketTest" />
         <item itemvalue="JAR Application.clientapp.jar" />
       </list>
     </recent_temporary>
@@ -104,6 +154,10 @@
       <workItem from="1761533768198" duration="960000" />
       <workItem from="1761534801564" duration="1206000" />
       <workItem from="1761574313162" duration="7000" />
+      <workItem from="1762488741273" duration="637000" />
+      <workItem from="1762501895718" duration="909000" />
+      <workItem from="1762504714238" duration="400000" />
+      <workItem from="1762507101659" duration="1045000" />
     </task>
     <servers />
   </component>

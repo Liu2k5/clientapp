@@ -33,20 +33,20 @@ public class LicenseWebSocketClient extends WebSocketClient {
 
     @Override
     public void onOpen(ServerHandshake handshakedata) {
-        System.out.println("====================================");
-        System.out.println("✅ WebSocket CONNECTION OPENED ✅");
+
+        System.out.println("WebSocket CONNECTION OPENED");
         System.out.println("HTTP Status: " + handshakedata.getHttpStatus());
         System.out.println("HTTP Status Message: " + handshakedata.getHttpStatusMessage());
-        System.out.println("====================================");
+
     }
 
     @Override
     public void onMessage(String message) {
-        System.out.println("====================================");
-        System.out.println("⚡ WebSocket MESSAGE RECEIVED ⚡");
+
+        System.out.println("WebSocket MESSAGE RECEIVED");
         System.out.println("Raw message: " + message);
         System.out.println("Message length: " + message.length());
-        System.out.println("====================================");
+
         
         try {
             JsonObject json = JsonParser.parseString(message).getAsJsonObject();
@@ -58,16 +58,16 @@ public class LicenseWebSocketClient extends WebSocketClient {
                 
                 if ("LOCK".equals(type)) {
                     String reason = json.has("reason") ? json.get("reason").getAsString() : "License has been revoked";
-                    System.out.println("🔒 LOCK message detected! Reason: " + reason);
+                    System.out.println("LOCK message detected! Reason: " + reason);
                     handleLicenseLock(reason);
                 } else {
-                    System.out.println("⚠️ Unknown message type: " + type);
+                    System.out.println("Unknown message type: " + type);
                 }
             } else {
-                System.out.println("⚠️ Message has no 'type' field");
+                System.out.println("Message has no 'type' field");
             }
         } catch (Exception e) {
-            System.err.println("❌ Error parsing message:");
+            System.err.println("Error parsing message:");
             e.printStackTrace();
         }
     }
